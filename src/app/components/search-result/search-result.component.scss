@@ -1,0 +1,45 @@
+.container {
+  background-color: white;
+  min-height: 100vh;
+  align-items: center;
+  padding-top: 8vw;
+  h3 {
+    color: #30a745;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+    font-size: 17px;
+    i {
+      font-size: 20px;
+      vertical-align: middle;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .table-container {
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #9c27b0;
+      }
+    }
+  }
+  .not-found {
+    text-align: center;
+    padding: 20px;
+  }
+  i {
+    color: #30a745;
+    font-size: 23px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .favorit {
+    color: red;
+  }
+}

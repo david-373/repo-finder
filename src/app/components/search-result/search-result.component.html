@@ -1,0 +1,38 @@
+<div class="container">
+  <h3 (click)="goHome()"><i class="fas fa-long-arrow-alt-left"></i> home</h3>
+  <app-search (serach)="findRepo($event)"></app-search>
+  <div class="table-container">
+    <table class="table table-striped" *ngIf="!showError">
+      <thead>
+        <tr>
+          <th scope="col">Repo name</th>
+          <th scope="col">Owner</th>
+          <th scope="col">Repo link</th>
+          <th scope="col">Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repo of data">
+          <th>{{ repo.full_name }}</th>
+          <td>{{ repo.owner.login }}</td>
+          <td>
+            <a [href]="repo.clone_url">open on github</a>
+          </td>
+          <td style="padding-left: 25px" (click)="toFavorites(repo)">
+            <i class="far fa-heart" [appFavorit]="repo.id"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator
+      [hidden]="showError"
+      [length]="collectionSize"
+      [pageSizeOptions]="[10, 15, 20]"
+      (page)="onPaginateChange($event)"
+    >
+    </mat-paginator>
+  </div>
+  <div class="not-found" *ngIf="showError">
+    <h3>{{ errorMessage }}</h3>
+  </div>
+</div>

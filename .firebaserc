@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "repo-finder-bfefb": {
+      "hosting": {
+        "repo-finder": [
+          "repo-finder-bfefb"
+        ]
+      }
+    }
+  }
+}

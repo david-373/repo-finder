@@ -1,0 +1,34 @@
+<div class="container">
+  <form
+    #myForm="ngForm"
+    (ngSubmit)="findRepo(search.value); myForm.resetForm()"
+  >
+    <div class="input-group">
+      <input
+        class="form-control"
+        type="text"
+        name="search"
+        placeholder="owner/repositoryName"
+        required
+        pattern="[a-zA-Z0-9-_]+/[a-zA-Z0-9-_]+"
+        ngModel
+        #search="ngModel"
+      />
+      <button
+        class="btn btn-success"
+        [disabled]="search.pristine || search.invalid"
+        type="submit"
+      >
+        Search
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="search.touched && !search.valid"
+      role="alert"
+    >
+      Enter the repository name like owner/repositoryName
+    </div>
+  </form>
+</div>

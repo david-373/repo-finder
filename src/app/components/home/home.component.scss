@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  background-color: white;
+  height: 100vh;
+  padding-top: 10vw;
+  img {
+    width: 260px;
+    animation-duration: 1.5s;
+  }
+  h1 {
+    color: #28a745;
+    animation-duration: 1s;
+  }
+  h3 {
+    animation-duration: 0.5s;
+  }
+}
+
+.animation {
+  animation: zoomInDown;
+}
