@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let repo of data">
-          <th>{{ repo.full_name }}</th>
+          <th>{{ repo.id }}</th>
           <td>{{ repo.owner.login }}</td>
           <td>
             <a [href]="repo.clone_url">open on github</a>

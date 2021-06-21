@@ -14,7 +14,7 @@ export class SearchResultComponent implements OnInit {
   collectionSize!: number;
   perPage: number = 10;
   data: Fork[] = [];
-  currentPage!: number;
+  currentPage: number = 1;
   searchParams: any;
   showError: boolean = false;
   errorMessage!: string;
@@ -32,9 +32,8 @@ export class SearchResultComponent implements OnInit {
     });
   }
   findRepo(par: any) {
+    this.paginator.firstPage();
     this.searchParams = par;
-    this.currentPage = 1;
-    this.paginator.pageIndex = 1;
     this.getRepoCount(par);
     this.getRepos(par);
   }
@@ -57,8 +56,6 @@ export class SearchResultComponent implements OnInit {
   getRepos(par: any) {
     this.repoService.getRepos(par, this.currentPage, this.perPage).subscribe(
       (data: any) => {
-        console.log(data);
-
         this.data = data;
         this.showError = false;
       },
@@ -77,7 +74,7 @@ export class SearchResultComponent implements OnInit {
   }
   onPaginateChange(e: any) {
     this.perPage = e.pageSize;
-    this.currentPage = e.pageIndex;
+    this.currentPage = e.pageIndex + 1;
     this.getRepos(this.searchParams);
   }
   toFavorites(data: Fork) {
