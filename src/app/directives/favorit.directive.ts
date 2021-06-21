@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import { RepoService } from './services/repo.service';
+import { RepoService } from '../services/repo.service';
 
 @Directive({
   selector: '[appFavorit]',

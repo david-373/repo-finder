@@ -13,12 +13,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let repo of data">
-          <th>{{ repo.id }}</th>
+          <th>{{ repo.full_name }}</th>
           <td>{{ repo.owner.login }}</td>
           <td>
             <a [href]="repo.clone_url">open on github</a>
           </td>
-          <td style="padding-left: 25px" (click)="toFavorites(repo)">
+          <td style="padding-left: 25px" (click)="confirmDialog(repo)">
             <i class="far fa-heart" [appFavorit]="repo.id"></i>
           </td>
         </tr>

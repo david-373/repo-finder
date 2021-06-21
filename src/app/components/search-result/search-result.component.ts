@@ -3,7 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fork } from 'src/app/fork';
 import { RepoService } from 'src/app/services/repo.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { FavoriteConfirmationDialog } from 'src/app/dialogs/favorite-confiramtion.component';
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
@@ -18,11 +19,11 @@ export class SearchResultComponent implements OnInit {
   searchParams: any;
   showError: boolean = false;
   errorMessage!: string;
-  toggleFav: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private repoService: RepoService
+    private repoService: RepoService,
+    private dialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((par) => {
@@ -77,8 +78,14 @@ export class SearchResultComponent implements OnInit {
     this.currentPage = e.pageIndex + 1;
     this.getRepos(this.searchParams);
   }
+  confirmDialog(data: Fork) {
+    const dialogRef = this.dialog.open(FavoriteConfirmationDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) this.toFavorites(data);
+    });
+  }
   toFavorites(data: Fork) {
-    this.toggleFav = !this.toggleFav;
     this.repoService.addFavorit(data);
   }
 }

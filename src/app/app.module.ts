@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { SearchResultComponent } from './components/search-result/search-result.component';
-import { SearchComponent } from './components/search/search.component';
+import {
+  HomeComponent,
+  SearchComponent,
+  SearchResultComponent,
+} from './components';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +17,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import { FavoritDirective } from './favorit.directive';
+import { FavoritDirective } from './directives/favorit.directive';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FavoriteConfirmationDialog } from './dialogs/favorite-confiramtion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +27,7 @@ import { FavoritDirective } from './favorit.directive';
     SearchResultComponent,
     SearchComponent,
     FavoritDirective,
+    FavoriteConfirmationDialog,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,7 @@ import { FavoritDirective } from './favorit.directive';
     NoopAnimationsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
